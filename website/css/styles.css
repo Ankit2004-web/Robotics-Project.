@@ -117,11 +117,19 @@ code {
   letter-spacing: 0.01em;
 }
 
+.nav-brand img,
+.hero-logo,
+.footer-logo {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #fff;
+  aspect-ratio: 1 / 1;
+}
+
 .nav-brand img {
   width: 34px;
   height: 34px;
-  border-radius: 10px;
-  background: #fff;
   box-shadow: 0 4px 14px rgba(216, 32, 24, 0.2);
 }
 
@@ -213,12 +221,11 @@ code {
 }
 
 .hero-logo {
-  width: 110px;
-  height: 110px;
+  width: 118px;
+  height: 118px;
   margin: 0 auto 1rem;
-  border-radius: 28px;
+  padding: 0.45rem;
   background: rgba(255, 255, 255, 0.96);
-  padding: 0.5rem;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
   animation: floatIn 0.9s ease both;
 }
@@ -709,10 +716,11 @@ th {
   flex-wrap: wrap;
 }
 
-.footer img {
-  border-radius: 14px;
-  background: #fff;
-  padding: 0.25rem;
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  padding: 0.2rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .footer p {
