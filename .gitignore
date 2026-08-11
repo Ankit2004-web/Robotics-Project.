@@ -1,0 +1,43 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arduino build artifacts
+arduino/*/build/
+*.hex
+*.elf
+*.eep
+*.bin
+
+# Python / extraction helpers (local only)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local extraction scratch (not part of the portfolio project)
+_pdf_extract.txt
+_pdf_images/
+_logo_preview.png
+logo_check.png
+
+# Source drops kept locally; curated copies live under original/ and media/
+ANKIT'S(22052533)ROBOTICSDOC.pdf
+logo
+
+# Secrets / local env
+.env
+.env.*
+*.pem
+*.key
+
+# Logs
+*.log

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640" role="img" aria-label="Anti Sleep Alarm circuit diagram">
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2094f3"/>
+      <stop offset="100%" stop-color="#0b5cab"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="640" fill="#f7fafc"/>
+  <text x="500" y="36" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#102a43">Circuit Diagram</text>
+  <text x="500" y="58" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">Logic side (Arduino 5V) separated from motor load side (9V via relay)</text>
+
+  <!-- Arduino -->
+  <rect x="360" y="90" width="280" height="180" rx="14" fill="url(#board)" stroke="#074987" stroke-width="2"/>
+  <text x="500" y="125" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#fff">Arduino UNO</text>
+  <text x="500" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#dbeafe">5V logic controller</text>
+  <text x="390" y="185" font-family="Consolas, monospace" font-size="13" fill="#fff">D2  í Blink Sensor</text>
+  <text x="390" y="210" font-family="Consolas, monospace" font-size="13" fill="#fff">D12 í Piezo Buzzer</text>
+  <text x="390" y="235" font-family="Consolas, monospace" font-size="13" fill="#fff">D13 í Relay IN</text>
+  <text x="390" y="255" font-family="Consolas, monospace" font-size="12" fill="#dbeafe">5V / GND í peripherals</text>
+
+  <!-- Sensor -->
+  <rect x="60" y="120" width="210" height="110" rx="12" fill="#fff" stroke="#334e68" stroke-width="2"/>
+  <text x="165" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#102a43">Blink Sensor</text>
+  <text x="165" y="175" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">VCC í 5V</text>
+  <text x="165" y="195" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">GND í GND</text>
+  <text x="165" y="215" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">OUT í D2</text>
+  <line x1="270" y1="175" x2="360" y2="175" stroke="#7c3aed" stroke-width="3"/>
+
+  <!-- Buzzer -->
+  <rect x="60" y="280" width="210" height="90" rx="12" fill="#fff" stroke="#d97706" stroke-width="2"/>
+  <text x="165" y="315" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#92400e">Piezo Buzzer</text>
+  <text x="165" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">(+) D12 ∑ () GND</text>
+  <line x1="270" y1="325" x2="360" y2="230" stroke="#059669" stroke-width="3"/>
+
+  <!-- Relay -->
+  <rect x="700" y="120" width="240" height="150" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+  <text x="820" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#115e59">Relay Module</text>
+  <text x="820" y="175" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">VCC í 5V ∑ GND í GND</text>
+  <text x="820" y="195" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#486581">IN í D13</text>
+  <text x="820" y="225" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#102a43">COM ê Battery (+)</text>
+  <text x="820" y="245" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#102a43">NC í Motor</text>
+  <line x1="640" y1="220" x2="700" y2="190" stroke="#2563eb" stroke-width="3"/>
+
+  <!-- Motor / battery domain -->
+  <rect x="300" y="360" width="560" height="220" rx="16" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="580" y="390" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#9a3412">Motor Power Circuit (isolated load)</text>
+
+  <rect x="340" y="420" width="150" height="70" rx="10" fill="#fff" stroke="#9a3412" stroke-width="2"/>
+  <text x="415" y="450" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#9a3412">9V Battery</text>
+  <text x="415" y="472" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#7c2d12">+ to Relay COM</text>
+
+  <rect x="560" y="420" width="150" height="70" rx="10" fill="#fff" stroke="#9a3412" stroke-width="2"/>
+  <text x="635" y="450" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#9a3412">Hobby Motor</text>
+  <text x="635" y="472" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#7c2d12">via Relay NC</text>
+
+  <rect x="760" y="420" width="70" height="70" rx="10" fill="#fff" stroke="#9a3412" stroke-width="2"/>
+  <text x="795" y="460" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#9a3412">Wheel</text>
+
+  <text x="580" y="535" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#7c2d12">Battery (+) í COM ∑ NC í Motor í Battery ()</text>
+  <text x="580" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9a3412">Do not power the motor from an Arduino GPIO pin.</text>
+</svg>

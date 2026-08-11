@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anti Sleep Alarm – Autonomous Wheel Robot</title>
+  <meta name="description" content="Arduino-based autonomous wheel robot prototype that detects prolonged eye closure using an IR blink sensor and provides audible warning with relay-controlled motor safety response." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="logo" src="logo.png" alt="Anti Sleep Alarm project logo" />
+      <p class="brand">Anti Sleep Alarm</p>
+      <h1>Autonomous Wheel Robot Prototype</h1>
+      <p class="lede">Arduino UNO system that monitors eye closure with an IR blink sensor, sounds a piezo warning, and stops a hobby motor through a relay.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/Ankit2004-web/anti-sleep-alarm-robot">GitHub Repository</a>
+        <a class="btn" href="#architecture">Architecture</a>
+      </div>
+      <p class="badge-row">
+        <span>Arduino</span>
+        <span>Embedded Systems</span>
+        <span>Robotics Prototype</span>
+        <span>Documentation Portfolio</span>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>This project is a low-voltage academic prototype demonstrating drowsiness-response logic for an autonomous wheel robot. It is not a certified automotive safety product.</p>
+      <img class="photo" src="../media/project-photo.png" alt="Physical prototype of the anti sleep alarm robot" />
+    </section>
+
+    <section id="architecture">
+      <h2>System Architecture</h2>
+      <img src="../diagrams/system-architecture.svg" alt="System architecture diagram" />
+    </section>
+
+    <section>
+      <h2>Detection Logic</h2>
+      <ul class="timeline">
+        <li><strong>Normal:</strong> Eye open / normal blinking → motor ON, buzzer OFF</li>
+        <li><strong>Warning (≥ 3 s closed):</strong> buzzer ON, motor still ON</li>
+        <li><strong>Emergency (≥ 4 s closed):</strong> relay stops motor, buzzer remains ON</li>
+        <li><strong>Recovery:</strong> blinking resumes → system resets</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Hardware</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Arduino UNO</td><td>Embedded controller</td></tr>
+            <tr><td>IR blink sensor</td><td>Eye open/closed sensing</td></tr>
+            <tr><td>Piezo buzzer</td><td>Audible warning</td></tr>
+            <tr><td>Relay module</td><td>Motor load switching</td></tr>
+            <tr><td>Hobby motor + 9V</td><td>Motion / stop demonstration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Wiring Snapshot</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Device</th><th>Arduino</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Blink sensor OUT</td><td>D2</td></tr>
+            <tr><td>Piezo buzzer</td><td>D12</td></tr>
+            <tr><td>Relay IN</td><td>D13</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img src="../diagrams/circuit-diagram.svg" alt="Circuit diagram" />
+    </section>
+
+    <section>
+      <h2>Flowchart</h2>
+      <img src="../diagrams/system-flowchart.svg" alt="Software flowchart" />
+    </section>
+
+    <section>
+      <h2>Demo Videos</h2>
+      <p>Links from the original documentation (Google Drive permission may be required):</p>
+      <ul>
+        <li><a href="https://drive.google.com/file/d/1kCcJM2rvE6KjCAY2x27UCMJ8hakX_5YS/view?usp=drive_link">Working video</a></li>
+        <li><a href="https://drive.google.com/file/d/19Enz9IXtXWdgx-ZpXkAhTIcgSXLgRXcD/view?usp=drive_link">Explanation video</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Safety Notes</h2>
+      <ul>
+        <li>Prototype only — not certified for real vehicles</li>
+        <li>Do not connect to a real vehicle braking system</li>
+        <li>Use a low-voltage hobby motor for demonstration</li>
+        <li>Motor current must pass through the relay/battery circuit, not an Arduino GPIO</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contribution</h2>
+      <p><strong>Ankit Biswas</strong> · Student ID 22052533 · CSE-3</p>
+      <p>Primary documented contribution: research, technical writing, editing/formatting, visuals, and review/revision of project documentation.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Portfolio documentation site for the Anti Sleep Alarm robotics prototype.</p>
+  </footer>
+</body>
+</html>
