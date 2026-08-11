@@ -192,25 +192,30 @@ code {
 
 .hero-media {
   position: absolute;
-  inset: 0;
+  inset: -8%;
   background:
-    radial-gradient(circle at 18% 20%, rgba(255, 176, 120, 0.35), transparent 42%),
-    radial-gradient(circle at 82% 70%, rgba(255, 120, 80, 0.22), transparent 46%),
-    linear-gradient(145deg, #7a120f 0%, #c42814 45%, #f06000 100%);
-  transform: scale(1.02);
-  animation: heroZoom 22s ease-in-out infinite alternate;
+    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(240, 96, 0, 0.55), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 85% 25%, rgba(216, 32, 24, 0.5), transparent 52%),
+    radial-gradient(ellipse 90% 70% at 60% 90%, rgba(142, 12, 24, 0.65), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 45% 45%, rgba(255, 140, 80, 0.18), transparent 60%),
+    linear-gradient(165deg, #3a0a0e 0%, #8e0c18 38%, #d82018 68%, #f06000 100%);
+  transform: scale(1.04);
+  filter: saturate(1.05);
+  animation: heroZoom 28s ease-in-out infinite alternate;
 }
 
 .hero-wash {
   position: absolute;
   inset: 0;
   background:
+    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(20, 4, 6, 0.15), transparent 70%),
     linear-gradient(
       180deg,
-      rgba(40, 8, 10, 0.18) 0%,
-      rgba(40, 8, 10, 0.08) 45%,
-      rgba(40, 8, 10, 0.28) 100%
+      rgba(20, 4, 6, 0.35) 0%,
+      rgba(20, 4, 6, 0.12) 42%,
+      rgba(20, 4, 6, 0.45) 100%
     );
+  backdrop-filter: blur(0.5px);
 }
 
 .hero-content {
