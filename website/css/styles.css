@@ -192,36 +192,30 @@ code {
 
 .hero-media {
   position: absolute;
-  inset: -6%;
-  background:
-    radial-gradient(circle at 12% 18%, #ff9a3c 0%, transparent 38%),
-    radial-gradient(circle at 88% 22%, #ff4b2b 0%, transparent 36%),
-    radial-gradient(circle at 70% 85%, #c01020 0%, transparent 42%),
-    radial-gradient(circle at 30% 75%, #f06000 0%, transparent 40%),
-    linear-gradient(
-      125deg,
-      #8e0c18 0%,
-      #d82018 32%,
-      #f06000 58%,
-      #ff8a3d 78%,
-      #d82018 100%
-    );
-  transform: scale(1.05);
-  animation: heroFlow 16s ease-in-out infinite alternate;
+  inset: 0;
+  /* Exact look from preferred screenshot: deep burgundy → warm peach */
+  background: linear-gradient(
+    135deg,
+    #5c2d2d 0%,
+    #663a39 18%,
+    #944c4d 42%,
+    #d89c7a 68%,
+    #f09e6c 84%,
+    #f6b08d 100%
+  );
+  animation: none;
 }
 
 .hero-wash {
   position: absolute;
   inset: 0;
-  /* Light veil only — keeps text readable without hiding the gradient */
-  background:
-    radial-gradient(ellipse 85% 70% at 50% 42%, rgba(0, 0, 0, 0.12), transparent 68%),
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.16) 0%,
-      rgba(0, 0, 0, 0.04) 50%,
-      rgba(0, 0, 0, 0.22) 100%
-    );
+  /* Minimal veil so the burgundy→peach blend stays clearly visible */
+  background: linear-gradient(
+    180deg,
+    rgba(60, 28, 28, 0.12) 0%,
+    rgba(60, 28, 28, 0.02) 45%,
+    rgba(60, 28, 28, 0.14) 100%
+  );
 }
 
 .hero-content {
