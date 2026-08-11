@@ -1,79 +1,112 @@
+<div align="center">
+
+<img src="media/project-logo.png" alt="Anti Sleep Alarm logo" width="160" />
+
 # Anti Sleep Alarm – Autonomous Wheel Robot
 
-Arduino-based autonomous wheel robot prototype that detects prolonged eye closure using an IR blink sensor and provides an audible warning with relay-controlled motor safety response.
+**Arduino-based wheel-robot prototype that detects prolonged eye closure with an IR blink sensor, sounds a piezo warning, and stops the motor through a relay.**
 
-<p align="center">
-  <img src="media/project-logo.png" alt="Anti Sleep Alarm project logo" width="180" />
-</p>
+<br/>
 
-<p align="center">
-  <img alt="Arduino" src="https://img.shields.io/badge/Arduino-UNO-00979D?logo=arduino&logoColor=white" />
-  <img alt="Embedded" src="https://img.shields.io/badge/Domain-Embedded%20%2F%20Robotics-1f6feb" />
-  <img alt="Status" src="https://img.shields.io/badge/Status-Portfolio%20Prototype-c45c26" />
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-green" />
-</p>
+![Arduino](https://img.shields.io/badge/Arduino-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+![C++](https://img.shields.io/badge/Firmware-C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Embedded](https://img.shields.io/badge/Domain-Embedded%20%2F%20Robotics-c01020?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Portfolio%20Prototype-f06000?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-2ea44f?style=for-the-badge)
 
-![Prototype photo](media/project-photo.png)
+<br/>
 
-## Overview
+<img src="media/project-photo.png" alt="Physical prototype of the Anti Sleep Alarm robot" width="860" />
 
-This repository packages an academic hardware project into a clean, reproducible GitHub portfolio structure.
+<br/>
 
-The system monitors a driver’s eye/blink state with an IR blink sensor mounted on transparent spectacles. If the eye remains closed beyond configured thresholds, the Arduino:
+| [Overview](#-overview) | [Architecture](#-system-architecture) | [Hardware](#-hardware-components) | [Firmware](#-detection-logic) | [Docs](#-documentation) | [Safety](#-safety-notes) |
+|:---:|:---:|:---:|:---:|:---:|:---:|
 
-1. Activates a **piezo buzzer** warning
-2. Switches a **relay** to stop a **hobby motor** on the wheel-robot demo platform
+</div>
 
-> This is a **low-voltage prototype** for learning and demonstration. It is **not** a certified automotive safety system and must not be connected to a real vehicle braking system.
+---
 
-## Problem Statement
+## 📌 Overview
 
-Driver fatigue and microsleep events are significant contributors to road accidents during long drives. This project explores a simple embedded approach to:
+This repository turns an academic hardware project into a clean, reproducible GitHub portfolio package.
 
-- detect prolonged eye closure
-- warn the operator audibly
-- demonstrate an automatic motion-stop response on a wheel robot
+The system monitors eye/blink state using an IR blink sensor mounted on transparent spectacles. If the eye stays closed beyond configured thresholds, the Arduino:
 
-## Solution
+1. **Warns** the operator with a piezo buzzer  
+2. **Stops** a hobby motor through a relay on the wheel-robot demo platform  
 
-| Block | Implementation |
-|-------|----------------|
-| Sensing | IR blink sensor (TX + RX) on spectacles |
-| Control | Arduino UNO state-machine firmware |
-| Warning | Piezo buzzer on D12 |
-| Safety demo actuator | Relay on D13 switching a 9V hobby motor |
-| Isolation | Relay keeps motor current off Arduino GPIO pins |
+> ⚠️ **Prototype only** — low-voltage educational demonstration.  
+> Not a certified automotive safety system. Do **not** connect it to a real vehicle braking system.
 
-## Key Features
+---
 
-- Eye/blink state monitoring via IR sensor
-- Drowsiness timing based on prolonged eye closure
-- Audible piezo warning
-- Relay-based hobby motor switching
-- Automatic safety stop demonstration
-- Non-blocking Arduino state machine
-- Configurable relay polarity
-- Wiring, architecture, testing, and troubleshooting docs
-- Optional Wokwi logic simulation (button substitutes for IR sensor)
-- Optional static documentation website
+## 🎯 Problem Statement
 
-## System Architecture
+Driver fatigue and microsleep events contribute to road accidents on long drives. This project explores a simple embedded approach to:
 
-![System architecture](diagrams/system-architecture.svg)
+- detect prolonged eye closure  
+- warn the operator audibly  
+- demonstrate an automatic motion-stop response on a wheel robot  
 
-```text
-Blink Sensor → Arduino UNO → Drowsiness Detection
-                               ├─ Buzzer
-                               └─ Relay → Hobby Motor (9V)
+---
+
+## ✅ Key Features
+
+| Feature | Supported |
+|---------|-----------|
+| Eye / blink state monitoring (IR sensor) | ✅ |
+| Drowsiness timing on prolonged eye closure | ✅ |
+| Audible piezo warning | ✅ |
+| Relay-based hobby motor switching | ✅ |
+| Automatic safety-stop demonstration | ✅ |
+| Non-blocking Arduino state machine | ✅ |
+| Configurable relay polarity | ✅ |
+| Wiring / testing / troubleshooting docs | ✅ |
+| Optional Wokwi logic simulation | ✅ |
+| Optional static documentation website | ✅ |
+
+---
+
+## 🏗️ System Architecture
+
+<div align="center">
+  <img src="diagrams/system-architecture.png" alt="System architecture diagram" width="880" />
+</div>
+
+```mermaid
+flowchart TB
+    A([Blink Sensor<br/>IR TX / RX]) --> B[Arduino UNO]
+    B --> C{Drowsiness<br/>Detection}
+    C -->|Warning| D[Piezo Buzzer<br/>D12]
+    C -->|Emergency| E[Relay Module<br/>D13]
+    E --> F[(Hobby Motor<br/>9V Battery)]
+
+    style A fill:#fff4ef,stroke:#f06000,stroke-width:2px,color:#2a1214
+    style B fill:#d82018,stroke:#c01020,stroke-width:2px,color:#ffffff
+    style C fill:#ffe8e2,stroke:#c01020,stroke-width:2px,color:#2a1214
+    style D fill:#fff4ef,stroke:#f06000,stroke-width:2px,color:#f06000
+    style E fill:#fff4ef,stroke:#c01020,stroke-width:2px,color:#c01020
+    style F fill:#c01020,stroke:#8e0c18,stroke-width:2px,color:#ffffff
 ```
 
-## Hardware Components
+**Signal flow**
+
+```text
+Blink Sensor  →  Arduino UNO  →  Drowsiness Detection
+                                      ├─ Buzzer (D12)
+                                      └─ Relay (D13) → Hobby Motor (9V)
+```
+
+---
+
+## 🔧 Hardware Components
 
 | Component | Purpose |
 |-----------|---------|
 | Arduino UNO | Embedded controller |
-| Arduino IDE | Build/upload toolchain |
-| IR blink sensor | Detects eye open/closed state |
+| Arduino IDE | Build / upload toolchain |
+| IR blink sensor | Detects eye open / closed state |
 | Transparent spectacles | Sensor mount near the eye |
 | Piezo buzzer | Audible alert |
 | Relay module | Switches motor load safely |
@@ -81,37 +114,42 @@ Blink Sensor → Arduino UNO → Drowsiness Detection
 | 9V battery | Motor power supply |
 | Jumper wires | Interconnections |
 
-## Pin Configuration
+### Pin Configuration
 
 | Device | Arduino Pin | Notes |
 |--------|-------------|-------|
-| Blink sensor OUT | D2 | VCC→5V, GND→GND |
-| Piezo buzzer | D12 | Active HIGH in firmware |
-| Relay IN | D13 | VCC→5V, GND→GND |
-| Hobby motor | — | Powered by 9V through relay COM/NC |
+| Blink sensor `OUT` | **D2** | VCC → 5V, GND → GND |
+| Piezo buzzer | **D12** | Active HIGH |
+| Relay `IN` | **D13** | VCC → 5V, GND → GND |
+| Hobby motor | — | Powered by **9V through relay COM / NC** |
 
-Full wiring details: [`docs/wiring.md`](docs/wiring.md)
+Full wiring guide: [`docs/wiring.md`](docs/wiring.md)
 
-## Working Principle
+---
 
-1. Arduino boots and enables normal operation (motor allowed, buzzer off).
-2. Blink sensor is read continuously with debounce.
-3. Documented sensor polarity: **eye shut → HIGH**.
+## ⚙️ Working Principle
+
+1. Arduino boots into normal operation *(motor allowed, buzzer off)*.  
+2. Blink sensor is read continuously with debounce.  
+3. Documented sensor polarity: **eye shut → HIGH**.  
 4. If closure persists:
-   - **≥ 3 s** → buzzer warning
-   - **≥ 4 s** → relay stops the hobby motor
-5. When blinking/eye-open resumes, outputs reset to normal.
+   - **≥ 3 s** → buzzer warning  
+   - **≥ 4 s** → relay stops the hobby motor  
+5. When blinking / eye-open resumes → system resets to normal.  
 
-## Detection Logic
+---
 
-| Condition | Duration | Output |
-|-----------|----------|--------|
-| Normal | Eye open / short blinks | Motor ON, buzzer OFF |
-| Suspicious / Warning | Eye closed ≥ **3 s** | Buzzer ON, motor ON |
-| Critical / Emergency | Eye closed ≥ **4 s** | Motor OFF via relay, buzzer ON |
-| Recovery | Eye opens | Return to normal |
+## 🧠 Detection Logic
 
-### Timing note from the source PDF
+| State | Condition | Outputs |
+|-------|-----------|---------|
+| **Normal** | Eye open / short blinks | Motor ON · Buzzer OFF |
+| **Warning** | Eye closed ≥ **3 s** | Motor ON · Buzzer ON |
+| **Emergency** | Eye closed ≥ **4 s** | Motor OFF · Buzzer ON |
+| **Recovery** | Eye opens again | Return to Normal |
+
+<details>
+<summary><strong>Timing note from the source PDF</strong></summary>
 
 | Source | Warning | Stop |
 |--------|---------|------|
@@ -119,86 +157,102 @@ Full wiring details: [`docs/wiring.md`](docs/wiring.md)
 | AIM + original code | — | ~4 s |
 | **Final firmware** | **3 s** | **4 s** |
 
-The repository follows the original implementation/AIM and documents the theory mismatch instead of hiding it.
+The repository follows the original implementation / AIM and documents the theory mismatch instead of hiding it.
 
-### Relay polarity
+</details>
+
+<details>
+<summary><strong>Relay polarity</strong></summary>
 
 Original code used:
 
 - normal run → `motorPin = LOW`
 - stop → `motorPin = HIGH`
 
-Combined with documented **NC** motor wiring, firmware defaults to:
+With documented **NC** motor wiring, firmware defaults to:
 
 ```cpp
 const bool RELAY_ACTIVE_LOW = false; // HIGH energizes relay / stops motor
 ```
 
-If your relay module is inverted, change that constant. Helpers `motorOn()` / `motorOff()` keep intent clear.
+If your module is inverted, flip that constant. Helpers `motorOn()` / `motorOff()` keep intent clear.
 
-## Circuit Diagram
+</details>
 
-![Circuit diagram](diagrams/circuit-diagram.svg)
+---
 
-Original reference image from the PDF:
+## 🔌 Circuit Diagram
 
-![Original circuit diagram](media/original-circuit-diagram.png)
+<div align="center">
+  <img src="diagrams/circuit-diagram.png" alt="Circuit overview diagram" width="880" />
+</div>
 
-## Flowchart
+<details>
+<summary><strong>Original circuit image from the academic PDF</strong></summary>
 
-![Software flowchart](diagrams/system-flowchart.svg)
+<br/>
 
-## Repository Structure
+<div align="center">
+  <img src="media/original-circuit-diagram.png" alt="Original circuit diagram from PDF" width="720" />
+</div>
+
+</details>
+
+---
+
+## 🔀 Software Flowchart
+
+<div align="center">
+  <img src="diagrams/system-flowchart.png" alt="Software flowchart" width="640" />
+</div>
+
+---
+
+## 📁 Repository Structure
 
 ```text
-anti-sleep-alarm-robot/
+anti-sleep-alarm/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
 ├── arduino/anti_sleep_alarm/anti_sleep_alarm.ino
-├── docs/
-│   ├── architecture.md
-│   ├── wiring.md
-│   ├── hardware.md
-│   ├── software.md
-│   ├── testing.md
-│   ├── troubleshooting.md
-│   └── project-report.md
-├── diagrams/
-│   ├── system-architecture.svg
-│   ├── circuit-diagram.svg
-│   └── system-flowchart.svg
-├── media/
-├── simulation/wokwi/
-├── website/
-└── original/
+├── docs/                 # architecture, wiring, testing, troubleshooting
+├── diagrams/             # PNG + SVG diagrams
+├── media/                # logo, prototype photo, original figures
+├── simulation/wokwi/     # optional logic simulation
+├── website/              # optional static docs site
+└── original/             # source academic PDF
 ```
 
-## Installation
+---
 
-1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. Connect Arduino UNO over USB
-3. Open `arduino/anti_sleep_alarm/anti_sleep_alarm.ino`
-4. Select board: **Arduino UNO**
-5. Select the correct **COM port**
-6. Upload the sketch
-7. Wire hardware as documented in [`docs/wiring.md`](docs/wiring.md)
-8. Power the 9V motor circuit through the relay and test the sensor
+## 🚀 Installation
 
-## How to Run
+1. Install [Arduino IDE](https://www.arduino.cc/en/software)  
+2. Connect Arduino UNO over USB  
+3. Open `arduino/anti_sleep_alarm/anti_sleep_alarm.ino`  
+4. Select board: **Arduino UNO**  
+5. Select the correct **COM port**  
+6. Upload the sketch  
+7. Wire hardware per [`docs/wiring.md`](docs/wiring.md)  
+8. Power the 9V motor circuit through the relay and test the sensor  
 
-1. Upload firmware
-2. Wear/align the blink-sensor spectacles (or stimulate the IR path for bench testing)
-3. Confirm motor runs in normal state
+---
+
+## ▶️ How to Run
+
+1. Upload firmware  
+2. Align the blink-sensor spectacles (or stimulate the IR path for bench testing)  
+3. Confirm motor runs in normal state  
 4. Hold eye closed:
-   - at ~3 s hear buzzer
-   - at ~4 s observe motor stop
-5. Open eyes / resume blinking to reset
-6. Optional: open Serial Monitor at **115200** baud for state logs
+   - ~**3 s** → hear buzzer  
+   - ~**4 s** → observe motor stop  
+5. Open eyes / resume blinking to reset  
+6. Optional: Serial Monitor at **115200** baud for state logs  
 
-## Testing
+---
 
-See [`docs/testing.md`](docs/testing.md) for full scenarios.
+## 🧪 Testing
 
 | Test | Expected |
 |------|----------|
@@ -207,80 +261,106 @@ See [`docs/testing.md`](docs/testing.md) for full scenarios.
 | Eye closed ≥ 4 s | Motor safety stop |
 | Blink resumes | Reset to normal |
 
-## Engineering Improvements
+Full scenarios: [`docs/testing.md`](docs/testing.md)
+
+---
+
+## 🛠️ Engineering Improvements
 
 | Original | Improved | Reason |
 |----------|----------|--------|
 | Blocking `while` + `delay(1000)` | Non-blocking state machine | Responsive control loop |
-| Uninitialized timer variable | Timer starts on validated closure | Deterministic timing |
+| Uninitialized timer | Timer starts on validated closure | Deterministic timing |
 | Magic numbers | Named threshold constants | Maintainability |
-| Raw motor pin semantics | `motorOn()` / `motorOff()` + polarity flag | Safer across relay modules |
+| Raw motor pin semantics | `motorOn()` / `motorOff()` + polarity flag | Safer across modules |
 | No debounce | 50 ms debounce | Noise rejection |
 | Implicit modes | `NORMAL` / `EYE_CLOSED` / `WARNING` / `EMERGENCY_STOP` | Clear behavior |
 
 Details: [`docs/software.md`](docs/software.md)
 
-## Simulation
+---
 
-Optional Wokwi package: [`simulation/`](simulation/)
+## 📚 Documentation
 
-- Button input substitutes for the physical IR blink sensor
-- Useful for logic/timing checks
-- Does **not** fully replace hardware validation
+| Document | Description |
+|----------|-------------|
+| [`docs/architecture.md`](docs/architecture.md) | System architecture |
+| [`docs/wiring.md`](docs/wiring.md) | Pinout & wiring |
+| [`docs/hardware.md`](docs/hardware.md) | Components & BOM |
+| [`docs/software.md`](docs/software.md) | Firmware design |
+| [`docs/testing.md`](docs/testing.md) | Test plan |
+| [`docs/troubleshooting.md`](docs/troubleshooting.md) | Common issues |
+| [`docs/project-report.md`](docs/project-report.md) | Project report summary |
+| [`website/`](website/) | Optional static site |
+| [`simulation/`](simulation/) | Optional Wokwi simulation |
 
-## Documentation Website
+---
 
-Optional static site: [`website/`](website/)
+## 🎬 Project Demonstration
 
-GitHub Pages can host `/website` (or docs folder) if enabled on the repository.
+| Demo | Link |
+|------|------|
+| Working video | [Google Drive](https://drive.google.com/file/d/1kCcJM2rvE6KjCAY2x27UCMJ8hakX_5YS/view?usp=drive_link) |
+| Explanation video | [Google Drive](https://drive.google.com/file/d/19Enz9IXtXWdgx-ZpXkAhTIcgSXLgRXcD/view?usp=drive_link) |
 
-## Project Demonstration
+> Playback depends on Google Drive sharing permissions set by the owner.
 
-Links from the original documentation:
+---
 
-- [Working video](https://drive.google.com/file/d/1kCcJM2rvE6KjCAY2x27UCMJ8hakX_5YS/view?usp=drive_link)
-- [Explanation video](https://drive.google.com/file/d/19Enz9IXtXWdgx-ZpXkAhTIcgSXLgRXcD/view?usp=drive_link)
+## 🛡️ Safety Notes
 
-These resolve to Google Drive files (`video1.mp4`, `video2.mp4`). Public playback depends on the Drive sharing permissions set by the owner.
+- Prototype / academic demonstration only  
+- Not certified for real-vehicle operation  
+- Do **not** connect to a real vehicle braking system  
+- Use a low-voltage hobby motor only  
+- Verify relay COM / NC wiring before applying motor power  
+- Never drive the motor directly from an Arduino GPIO  
+- Avoid short circuits; confirm polarity before power-up  
+- Supervise battery-powered tests  
 
-## Safety Notes
+---
 
-- Prototype / academic demonstration only
-- Not certified for real-vehicle operation
-- Do **not** connect to a real vehicle braking system
-- Use a low-voltage hobby motor only
-- Verify relay COM/NC wiring before applying motor power
-- Never drive the motor directly from an Arduino GPIO
-- Avoid short circuits; confirm polarity before power-up
-- Supervise battery-powered tests
+## 👤 Individual Contribution
 
-## Individual Contribution
+**Ankit Biswas** · Student ID **22052533** · **CSE-3**
 
-**Ankit Biswas**  
-Student ID: **22052533**  
-Course: **CSE-3**
+Primary contribution recorded in the source PDF: **documentation**
 
-Primary contribution recorded in the source PDF: **documentation**, including:
+- Research  
+- Technical writing  
+- Editing and formatting  
+- Incorporating visuals  
+- Review and revision  
 
-- research
-- technical writing
-- editing and formatting
-- incorporating visuals
-- review and revision
+**Team:** Sudeep Dutta · Dipanwita Sen · Ankit Biswas · Pratik Maity  
 
-Team members listed in the source document: Sudeep Dutta, Dipanwita Sen, Ankit Biswas, Pratik Maity.
+---
 
-## Verification Status
+## ✔️ Verification Status
 
 | Item | Status |
 |------|--------|
-| Firmware + docs implemented from PDF source | IMPLEMENTED |
-| Relay polarity made configurable + documented | IMPLEMENTED |
-| Diagrams/README/testing package | IMPLEMENTED |
-| Google Drive demo links exist in docs | DOCUMENTED (permission-dependent) |
-| Arduino CLI compile in packaging environment | NOT AVAILABLE HERE |
-| Physical hardware re-test in this environment | REQUIRES PHYSICAL HARDWARE TESTING |
+| Firmware + docs from PDF source | **IMPLEMENTED** |
+| Relay polarity configurable + documented | **IMPLEMENTED** |
+| Diagrams / README / testing package | **IMPLEMENTED** |
+| Demo video links | **DOCUMENTED** *(permission-dependent)* |
+| Arduino CLI compile here | Not available on this machine |
+| Physical hardware re-test here | Requires physical hardware testing |
 
-## License
+---
+
+<div align="center">
+
+### License
 
 MIT License — see [`LICENSE`](LICENSE)
+
+<br/>
+
+<img src="media/project-logo.png" alt="Anti Sleep Alarm" width="72" />
+
+**Anti Sleep Alarm** — Embedded systems portfolio project
+
+[Repository](https://github.com/Ankit2004-web/anti-sleep-alarm) · [Arduino Firmware](arduino/anti_sleep_alarm/anti_sleep_alarm.ino) · [Wiring Guide](docs/wiring.md)
+
+</div>
