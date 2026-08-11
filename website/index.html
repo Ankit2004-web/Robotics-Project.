@@ -6,118 +6,284 @@
   <title>Anti Sleep Alarm – Autonomous Wheel Robot</title>
   <meta name="description" content="Arduino-based autonomous wheel robot prototype that detects prolonged eye closure using an IR blink sensor and provides audible warning with relay-controlled motor safety response." />
   <meta name="theme-color" content="#d82018" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <img class="logo" src="logo.png" alt="Anti Sleep Alarm project logo" />
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a class="nav-brand" href="#top">
+      <img src="logo.png" alt="" width="34" height="34" />
+      <span>Anti Sleep Alarm</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" type="button">
+      <span class="sr-only">Menu</span>
+      <span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#logic">Logic</a>
+      <a href="#diagrams">Diagrams</a>
+      <a href="#firmware">Firmware</a>
+      <a href="#videos">Videos</a>
+      <a href="#safety">Safety</a>
+      <a class="nav-cta" href="https://github.com/Ankit2004-web/anti-sleep-alarm" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="hero-wash" aria-hidden="true"></div>
+    <div class="hero-content reveal">
+      <img class="hero-logo" src="logo.png" alt="Anti Sleep Alarm logo" />
       <p class="brand">Anti Sleep Alarm</p>
-      <h1>Autonomous Wheel Robot Prototype</h1>
-      <p class="lede">Arduino UNO system that monitors eye closure with an IR blink sensor, sounds a piezo warning, and stops a hobby motor through a relay.</p>
+      <h1>Keep the driver awake. Stop the wheel when it matters.</h1>
+      <p class="lede">An Arduino UNO wheel-robot prototype that watches eye closure with an IR blink sensor, sounds a piezo warning, and cuts motor power through a relay.</p>
       <div class="cta-row">
-        <a class="btn primary" href="https://github.com/Ankit2004-web/anti-sleep-alarm">GitHub Repository</a>
-        <a class="btn" href="#architecture">Architecture</a>
+        <a class="btn primary" href="#firmware">View Firmware</a>
+        <a class="btn ghost" href="#videos">Watch Demos</a>
       </div>
-      <p class="badge-row">
-        <span>Arduino</span>
-        <span>Embedded Systems</span>
-        <span>Robotics Prototype</span>
-        <span>Documentation Portfolio</span>
-      </p>
     </div>
   </header>
 
-  <main>
-    <section>
-      <h2>Overview</h2>
-      <p>This project is a low-voltage academic prototype demonstrating drowsiness-response logic for an autonomous wheel robot. It is not a certified automotive safety product.</p>
-      <img class="photo" src="../media/project-photo.png" alt="Physical prototype of the anti sleep alarm robot" />
-    </section>
-
-    <section id="architecture">
-      <h2>System Architecture</h2>
-      <img src="../diagrams/system-architecture.png" alt="System architecture diagram" />
-    </section>
-
-    <section>
-      <h2>Detection Logic</h2>
-      <ul class="timeline">
-        <li><strong>Normal:</strong> Eye open / normal blinking → motor ON, buzzer OFF</li>
-        <li><strong>Warning (≥ 3 s closed):</strong> buzzer ON, motor still ON</li>
-        <li><strong>Emergency (≥ 4 s closed):</strong> relay stops motor, buzzer remains ON</li>
-        <li><strong>Recovery:</strong> blinking resumes → system resets</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Hardware</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Component</th><th>Purpose</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Arduino UNO</td><td>Embedded controller</td></tr>
-            <tr><td>IR blink sensor</td><td>Eye open/closed sensing</td></tr>
-            <tr><td>Piezo buzzer</td><td>Audible warning</td></tr>
-            <tr><td>Relay module</td><td>Motor load switching</td></tr>
-            <tr><td>Hobby motor + 9V</td><td>Motion / stop demonstration</td></tr>
-          </tbody>
-        </table>
+  <main id="main">
+    <section class="section" id="overview">
+      <div class="section-head reveal">
+        <p class="eyebrow">Overview</p>
+        <h2>A focused drowsiness-response prototype</h2>
+        <p class="section-copy">Built as an academic robotics project and packaged as a clean portfolio repository. The physical demo uses spectacles-mounted IR sensing and a hobby motor stand-in for vehicle motion.</p>
+      </div>
+      <div class="split reveal">
+        <figure class="photo-frame">
+          <img src="assets/project-photo.png" alt="Physical Anti Sleep Alarm prototype with Arduino, glasses sensor, relay, buzzer, motor, and 9V battery" />
+          <figcaption>Physical prototype — Arduino UNO, IR blink sensor on spectacles, relay, piezo buzzer, hobby motor, 9V battery</figcaption>
+        </figure>
+        <div class="stat-stack">
+          <article>
+            <h3>3 s</h3>
+            <p>Warning threshold — buzzer activates</p>
+          </article>
+          <article>
+            <h3>4 s</h3>
+            <p>Emergency threshold — motor stop via relay</p>
+          </article>
+          <article>
+            <h3>D2 / D12 / D13</h3>
+            <p>Sensor · Buzzer · Relay pin map</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Wiring Snapshot</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Device</th><th>Arduino</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Blink sensor OUT</td><td>D2</td></tr>
-            <tr><td>Piezo buzzer</td><td>D12</td></tr>
-            <tr><td>Relay IN</td><td>D13</td></tr>
-          </tbody>
-        </table>
+    <section class="section tint" id="architecture">
+      <div class="section-head reveal">
+        <p class="eyebrow">System Architecture</p>
+        <h2>Sense → Decide → Warn → Stop</h2>
+        <p class="section-copy">The blink sensor feeds the Arduino state machine. Warning goes to the buzzer; emergency action opens the motor path through the relay.</p>
       </div>
-      <img src="../diagrams/circuit-diagram.png" alt="Circuit diagram" />
+      <figure class="diagram reveal">
+        <img src="assets/system-architecture.png" alt="System architecture diagram showing blink sensor, Arduino, buzzer, relay, and motor" />
+      </figure>
+      <ol class="flow-steps reveal">
+        <li><span>01</span><strong>Blink Sensor</strong><em>IR TX/RX on spectacles</em></li>
+        <li><span>02</span><strong>Arduino UNO</strong><em>State-machine firmware</em></li>
+        <li><span>03</span><strong>Piezo Buzzer</strong><em>Audible warning on D12</em></li>
+        <li><span>04</span><strong>Relay + Motor</strong><em>9V load switched on D13</em></li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Flowchart</h2>
-      <img src="../diagrams/system-flowchart.png" alt="Software flowchart" />
+    <section class="section" id="hardware">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hardware</p>
+        <h2>Components &amp; pin configuration</h2>
+        <p class="section-copy">Motor current stays on the battery/relay side. Arduino GPIO never drives the hobby motor directly.</p>
+      </div>
+      <div class="table-grid reveal">
+        <div class="table-panel">
+          <h3>Components</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Component</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td>Arduino UNO</td><td>Embedded controller</td></tr>
+                <tr><td>IR blink sensor</td><td>Eye open / closed sensing</td></tr>
+                <tr><td>Transparent spectacles</td><td>Sensor mount near the eye</td></tr>
+                <tr><td>Piezo buzzer</td><td>Audible alert</td></tr>
+                <tr><td>Relay module</td><td>Isolates / switches motor load</td></tr>
+                <tr><td>Hobby motor + wheel</td><td>Motion / stop demonstration</td></tr>
+                <tr><td>9V battery</td><td>Motor power supply</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-panel">
+          <h3>Pin map</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Device</th><th>Arduino</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Blink sensor OUT</td><td><code>D2</code></td><td>VCC→5V, GND→GND</td></tr>
+                <tr><td>Piezo buzzer</td><td><code>D12</code></td><td>Active HIGH</td></tr>
+                <tr><td>Relay IN</td><td><code>D13</code></td><td>VCC→5V, GND→GND</td></tr>
+                <tr><td>Hobby motor</td><td>—</td><td>9V via relay COM/NC</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Demo Videos</h2>
-      <p>Links from the original documentation (Google Drive permission may be required):</p>
-      <ul>
-        <li><a href="https://drive.google.com/file/d/1kCcJM2rvE6KjCAY2x27UCMJ8hakX_5YS/view?usp=drive_link">Working video</a></li>
-        <li><a href="https://drive.google.com/file/d/19Enz9IXtXWdgx-ZpXkAhTIcgSXLgRXcD/view?usp=drive_link">Explanation video</a></li>
-      </ul>
+    <section class="section tint" id="logic">
+      <div class="section-head reveal">
+        <p class="eyebrow">Detection Logic</p>
+        <h2>Four states. Clear thresholds.</h2>
+        <p class="section-copy">Final firmware matches the original AIM / Arduino timing: warn at 3 seconds, stop at 4 seconds. Eye-open resets the system.</p>
+      </div>
+      <div class="state-grid reveal">
+        <article>
+          <p class="tag">Normal</p>
+          <h3>Eye open / short blinks</h3>
+          <p>Motor ON · Buzzer OFF</p>
+        </article>
+        <article>
+          <p class="tag warn">Warning</p>
+          <h3>Closed ≥ 3 seconds</h3>
+          <p>Motor ON · Buzzer ON</p>
+        </article>
+        <article>
+          <p class="tag danger">Emergency</p>
+          <h3>Closed ≥ 4 seconds</h3>
+          <p>Motor OFF · Buzzer ON</p>
+        </article>
+        <article>
+          <p class="tag ok">Recovery</p>
+          <h3>Blinking resumes</h3>
+          <p>Reset to Normal</p>
+        </article>
+      </div>
     </section>
 
-    <section>
-      <h2>Safety Notes</h2>
-      <ul>
-        <li>Prototype only — not certified for real vehicles</li>
+    <section class="section" id="diagrams">
+      <div class="section-head reveal">
+        <p class="eyebrow">Diagrams</p>
+        <h2>Circuit overview &amp; software flowchart</h2>
+        <p class="section-copy">Visual references for wiring domains and the non-blocking firmware path.</p>
+      </div>
+      <div class="diagram-stack">
+        <figure class="diagram reveal">
+          <figcaption>Circuit overview — logic side vs isolated 9V motor load</figcaption>
+          <img src="assets/circuit-diagram.png" alt="Circuit overview diagram" />
+        </figure>
+        <figure class="diagram reveal">
+          <figcaption>Software flowchart — NORMAL → EYE_CLOSED → WARNING → EMERGENCY_STOP</figcaption>
+          <img src="assets/system-flowchart.png" alt="Software flowchart diagram" class="flowchart" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section tint" id="firmware">
+      <div class="section-head reveal">
+        <p class="eyebrow">Firmware</p>
+        <h2>Arduino source used in this project</h2>
+        <p class="section-copy">Non-blocking state machine with configurable relay polarity, debounce, and Serial diagnostics. File: <code>anti_sleep_alarm.ino</code></p>
+      </div>
+      <div class="code-shell reveal">
+        <div class="code-toolbar">
+          <div class="code-meta">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="code-title">arduino/anti_sleep_alarm/anti_sleep_alarm.ino</span>
+          </div>
+          <div class="code-actions">
+            <a class="btn tiny" href="https://github.com/Ankit2004-web/anti-sleep-alarm/blob/main/arduino/anti_sleep_alarm/anti_sleep_alarm.ino" target="_blank" rel="noopener">Open on GitHub</a>
+            <button class="btn tiny" id="copyCode" type="button">Copy</button>
+          </div>
+        </div>
+        <pre class="code-view"><code class="language-cpp" id="firmwareCode">Loading firmware…</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-head reveal">
+        <p class="eyebrow">Demonstration</p>
+        <h2>Project videos</h2>
+        <p class="section-copy">Links from the original documentation. Google Drive sharing permissions may be required for playback.</p>
+      </div>
+      <div class="video-grid reveal">
+        <a class="video-tile" href="https://drive.google.com/file/d/1kCcJM2rvE6KjCAY2x27UCMJ8hakX_5YS/view?usp=drive_link" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true">▶</span>
+          <span class="label">Working video</span>
+          <span class="hint">Prototype demonstration · Google Drive</span>
+        </a>
+        <a class="video-tile alt" href="https://drive.google.com/file/d/19Enz9IXtXWdgx-ZpXkAhTIcgSXLgRXcD/view?usp=drive_link" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true">▶</span>
+          <span class="label">Explanation video</span>
+          <span class="hint">Project walkthrough · Google Drive</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section tint" id="run">
+      <div class="section-head reveal">
+        <p class="eyebrow">How to run</p>
+        <h2>Upload, wire, test</h2>
+      </div>
+      <ol class="run-list reveal">
+        <li>Install Arduino IDE and open <code>anti_sleep_alarm.ino</code></li>
+        <li>Select <strong>Arduino UNO</strong> + COM port, then upload</li>
+        <li>Wire sensor → D2, buzzer → D12, relay → D13</li>
+        <li>Power motor through relay COM/NC with 9V battery</li>
+        <li>Hold eye closed: ~3 s buzzer, ~4 s motor stop</li>
+        <li>Optional Serial Monitor at <strong>115200</strong> baud</li>
+      </ol>
+    </section>
+
+    <section class="section" id="safety">
+      <div class="section-head reveal">
+        <p class="eyebrow">Safety</p>
+        <h2>Prototype boundaries</h2>
+      </div>
+      <ul class="safety-list reveal">
+        <li>Academic / portfolio prototype only — not automotive certified</li>
         <li>Do not connect to a real vehicle braking system</li>
-        <li>Use a low-voltage hobby motor for demonstration</li>
-        <li>Motor current must pass through the relay/battery circuit, not an Arduino GPIO</li>
+        <li>Use a low-voltage hobby motor for demonstration only</li>
+        <li>Never power the motor from an Arduino GPIO pin</li>
+        <li>Verify relay polarity and battery wiring before power-up</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Contribution</h2>
-      <p><strong>Ankit Biswas</strong> · Student ID 22052533 · CSE-3</p>
-      <p>Primary documented contribution: research, technical writing, editing/formatting, visuals, and review/revision of project documentation.</p>
+    <section class="section tint" id="contribution">
+      <div class="section-head reveal">
+        <p class="eyebrow">Contribution</p>
+        <h2>Ankit Biswas</h2>
+        <p class="section-copy">Student ID <strong>22052533</strong> · Course <strong>CSE-3</strong></p>
+      </div>
+      <div class="contrib reveal">
+        <p>Primary documented contribution: <strong>documentation</strong> — research, technical writing, editing &amp; formatting, visuals, and review/revision with the team.</p>
+        <p class="team">Team: Sudeep Dutta · Dipanwita Sen · Ankit Biswas · Pratik Maity</p>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Portfolio documentation site for the Anti Sleep Alarm robotics prototype.</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <img src="logo.png" alt="" width="48" height="48" />
+      <div>
+        <strong>Anti Sleep Alarm</strong>
+        <p>Embedded systems portfolio project · MIT License</p>
+      </div>
+      <a class="btn primary" href="https://github.com/Ankit2004-web/anti-sleep-alarm" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

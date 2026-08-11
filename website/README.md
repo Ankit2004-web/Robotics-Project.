@@ -1,31 +1,39 @@
 # Documentation Website
 
-Lightweight static site for portfolio presentation.
+Production-style static portfolio site for the Anti Sleep Alarm project.
+
+## Contents
+
+- Hero with project branding (logo color theme)
+- Overview + prototype photo
+- System architecture diagram
+- Hardware / pin tables
+- Detection logic states
+- Circuit + flowchart diagrams
+- Full Arduino firmware viewer (syntax highlighted, copy button)
+- Demo video links
+- Run steps, safety notes, contribution
 
 ## Local preview
 
-Open `index.html` in a browser, or serve the repository root / `website` folder with any static file server so relative links to `../media` and `../diagrams` resolve.
-
-Example:
+From the repository root (recommended so shared assets resolve if needed):
 
 ```bash
-# from repository root
 python -m http.server 8080
 ```
 
-Then open `http://localhost:8080/website/`.
+Open: [http://localhost:8080/website/](http://localhost:8080/website/)
+
+Or open `website/index.html` via any static server. Firmware loads from `website/assets/anti_sleep_alarm.ino`.
 
 ## GitHub Pages
 
-If this repository is on GitHub:
+1. Repository Settings → Pages  
+2. Source: Deploy from branch `main`  
+3. Folder: `/website`  
 
-1. Settings → Pages
-2. Source: Deploy from branch
-3. Branch: `main`
-4. Folder: `/website` (or root if you prefer)
+Because diagrams/code are copied under `website/assets/`, Pages can serve `/website` cleanly.
 
-Relative asset paths (`../media`, `../diagrams`) work best when Pages serves the repository root. If you set Pages to `/website` only, copy or adjust asset paths accordingly.
+## Push target
 
-## Deployment status
-
-This packaging step prepares the static site. Actual GitHub Pages enablement depends on repository settings and authentication on the publishing machine.
+Only: `https://github.com/Ankit2004-web/anti-sleep-alarm`
