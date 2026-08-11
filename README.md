@@ -326,9 +326,18 @@ Details: [`docs/software.md`](docs/software.md)
 | [`docs/project-report.md`](docs/project-report.md) | Project report summary |
 | [`firmware/`](firmware/) | Arduino source |
 | [`hardware/`](hardware/) | Diagrams & photos |
-| [`website/`](website/) | Portfolio site |
+| [`website/`](website/) | Portfolio site (deploy this on Vercel) |
 | [`simulation/`](simulation/) | Optional Wokwi simulation |
 | [`archive/`](archive/) | Original academic PDF |
+
+### Deploy website on Vercel
+
+1. Open [vercel.com/new](https://vercel.com/new) and import `Ankit2004-web/anti-sleep-alarm`
+2. Set **Root Directory** to `website`
+3. Framework: **Other** · leave build command empty
+4. Deploy
+
+Details: [`website/README.md`](website/README.md)
 
 ---
 
