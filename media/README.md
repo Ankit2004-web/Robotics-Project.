@@ -2,7 +2,7 @@
 
 | File | Description |
 |------|-------------|
-| `project-logo.png` | Project logo used in README branding |
+| `project-logo.png` | Project logo used in README / site branding |
 | `project-photo.png` | Physical prototype photo extracted from the original PDF |
 | `original-circuit-diagram.png` | Scanned/original circuit illustration from the PDF |
 | `original-flowchart.png` | Original project-phases flowchart from the PDF |
