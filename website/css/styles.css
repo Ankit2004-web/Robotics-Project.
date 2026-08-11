@@ -194,7 +194,7 @@ code {
   position: absolute;
   inset: 0;
   background:
-    url("assets/hero-background.png") center/cover no-repeat;
+    url("../assets/hero-background.png") center/cover no-repeat;
   transform: scale(1.03);
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
@@ -635,7 +635,7 @@ th {
   color: #fff !important;
   background:
     linear-gradient(145deg, rgba(142, 12, 24, 0.92), rgba(240, 96, 0, 0.88)),
-    url("assets/project-photo.png") center/cover;
+    url("../assets/project-photo.png") center/cover;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -643,7 +643,7 @@ th {
 .video-tile.alt {
   background:
     linear-gradient(145deg, rgba(192, 16, 32, 0.92), rgba(240, 104, 0, 0.86)),
-    url("assets/project-photo.png") center/cover;
+    url("../assets/project-photo.png") center/cover;
 }
 
 .video-tile:hover {

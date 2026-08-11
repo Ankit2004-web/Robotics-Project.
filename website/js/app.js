@@ -65,22 +65,41 @@
     reveals.forEach((el) => el.classList.add("in"));
   }
 
-  // Load firmware + highlight
+  // Load firmware + highlight (prefer embedded source for Vercel reliability)
+  const renderFirmware = (text) => {
+    firmwareText = text;
+    firmwareCode.textContent = text;
+    if (window.hljs) {
+      window.hljs.highlightElement(firmwareCode);
+    }
+  };
+
   const loadFirmware = async () => {
     if (!firmwareCode) return;
-    try {
-      const res = await fetch("assets/anti_sleep_alarm.ino", { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      firmwareText = await res.text();
-      firmwareCode.textContent = firmwareText;
-      if (window.hljs) {
-        window.hljs.highlightElement(firmwareCode);
-      }
-    } catch (err) {
-      firmwareCode.textContent =
-        "// Could not load firmware file.\n// Open firmware/anti_sleep_alarm/anti_sleep_alarm.ino in the repository.";
-      console.error(err);
+
+    if (typeof window.FIRMWARE_SOURCE === "string" && window.FIRMWARE_SOURCE.length) {
+      renderFirmware(window.FIRMWARE_SOURCE);
+      return;
     }
+
+    const candidates = [
+      "assets/anti_sleep_alarm.txt",
+      "assets/anti_sleep_alarm.ino"
+    ];
+
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) continue;
+        renderFirmware(await res.text());
+        return;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    firmwareCode.textContent =
+      "// Could not load firmware file.\n// Open firmware/anti_sleep_alarm/anti_sleep_alarm.ino in the repository.";
   };
 
   loadFirmware();
