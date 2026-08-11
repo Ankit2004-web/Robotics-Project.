@@ -1,22 +1,20 @@
-# Documentation Website
+# Website
 
 Production-style static portfolio site for the Anti Sleep Alarm project.
 
-## Contents
-
-- Hero with project branding (logo color theme)
-- Overview + prototype photo
-- System architecture diagram
-- Hardware / pin tables
-- Detection logic states
-- Circuit + flowchart diagrams
-- Full Arduino firmware viewer (syntax highlighted, copy button)
-- Demo video links
-- Run steps, safety notes, contribution
+```text
+website/
+├── index.html          ← open this page
+├── css/styles.css      ← logo-themed styles
+├── js/app.js           ← nav, animations, firmware loader
+├── logo.png
+├── assets/             ← self-contained images + firmware copy
+└── README.md
+```
 
 ## Local preview
 
-From the repository root (recommended so shared assets resolve if needed):
+From the repository root:
 
 ```bash
 python -m http.server 8080
@@ -24,15 +22,11 @@ python -m http.server 8080
 
 Open: [http://localhost:8080/website/](http://localhost:8080/website/)
 
-Or open `website/index.html` via any static server. Firmware loads from `website/assets/anti_sleep_alarm.ino`.
-
 ## GitHub Pages
 
-1. Repository Settings → Pages  
-2. Source: Deploy from branch `main`  
+1. Settings → Pages  
+2. Branch: `main`  
 3. Folder: `/website`  
-
-Because diagrams/code are copied under `website/assets/`, Pages can serve `/website` cleanly.
 
 ## Push target
 

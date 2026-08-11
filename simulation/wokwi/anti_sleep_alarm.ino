@@ -6,7 +6,7 @@
  * - A push button on D2 emulates "eye closed" when pressed (pin reads LOW).
  * - Therefore this simulation sketch inverts the hardware eye-closed level.
  *
- * Hardware firmware (arduino/anti_sleep_alarm/anti_sleep_alarm.ino):
+ * Hardware firmware (firmware/anti_sleep_alarm/anti_sleep_alarm.ino):
  *   eye closed = HIGH
  *
  * This Wokwi sketch:

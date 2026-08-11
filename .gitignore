@@ -10,7 +10,8 @@ desktop.ini
 *.swo
 *~
 
-# Arduino build artifacts
+# Arduino / firmware build artifacts
+firmware/*/build/
 arduino/*/build/
 *.hex
 *.elf
@@ -29,7 +30,7 @@ _pdf_images/
 _logo_preview.png
 logo_check.png
 
-# Source drops kept locally; curated copies live under original/ and media/
+# Local source drops (curated copies live under archive/ and hardware/)
 ANKIT'S(22052533)ROBOTICSDOC.pdf
 logo
 

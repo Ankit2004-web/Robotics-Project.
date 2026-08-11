@@ -3,7 +3,7 @@
 ## Firmware Location
 
 ```text
-arduino/anti_sleep_alarm/anti_sleep_alarm.ino
+firmware/anti_sleep_alarm/anti_sleep_alarm.ino
 ```
 
 ## Intended Behavior
@@ -123,7 +123,7 @@ NORMAL → EYE_CLOSED → WARNING → EMERGENCY_STOP
 ## Build / Upload
 
 1. Install Arduino IDE
-2. Open `arduino/anti_sleep_alarm/anti_sleep_alarm.ino`
+2. Open `firmware/anti_sleep_alarm/anti_sleep_alarm.ino`
 3. Board: **Arduino UNO**
 4. Select the correct COM port
 5. Upload

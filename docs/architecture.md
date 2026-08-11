@@ -64,8 +64,8 @@ Blink Sensor (IR TX/RX on spectacles)
 
 ## Diagrams
 
-- Architecture (GitHub-friendly PNG): [`../diagrams/system-architecture.png`](../diagrams/system-architecture.png)
-- Architecture (SVG): [`../diagrams/system-architecture.svg`](../diagrams/system-architecture.svg)
-- Circuit (PNG): [`../diagrams/circuit-diagram.png`](../diagrams/circuit-diagram.png)
-- Flowchart (PNG): [`../diagrams/system-flowchart.png`](../diagrams/system-flowchart.png)
-- Original scanned circuit photo: [`../media/original-circuit-diagram.png`](../media/original-circuit-diagram.png)
+- Architecture (GitHub-friendly PNG): [`../hardware/diagrams/system-architecture.png`](../hardware/diagrams/system-architecture.png)
+- Architecture (SVG): [`../hardware/diagrams/system-architecture.svg`](../hardware/diagrams/system-architecture.svg)
+- Circuit (PNG): [`../hardware/diagrams/circuit-diagram.png`](../hardware/diagrams/circuit-diagram.png)
+- Flowchart (PNG): [`../hardware/diagrams/system-flowchart.png`](../hardware/diagrams/system-flowchart.png)
+- Original scanned circuit photo: [`../hardware/images/original-circuit-diagram.png`](../hardware/images/original-circuit-diagram.png)

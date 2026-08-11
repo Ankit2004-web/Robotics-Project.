@@ -78,7 +78,7 @@
       }
     } catch (err) {
       firmwareCode.textContent =
-        "// Could not load firmware file.\n// Open arduino/anti_sleep_alarm/anti_sleep_alarm.ino in the repository.";
+        "// Could not load firmware file.\n// Open firmware/anti_sleep_alarm/anti_sleep_alarm.ino in the repository.";
       console.error(err);
     }
   };

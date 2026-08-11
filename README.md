@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="media/project-logo.png" alt="Anti Sleep Alarm logo" width="160" />
+<img src="hardware/images/project-logo.png" alt="Anti Sleep Alarm logo" width="160" />
 
 # Anti Sleep Alarm – Autonomous Wheel Robot
 
@@ -16,7 +16,7 @@
 
 <br/>
 
-<img src="media/project-photo.png" alt="Physical prototype of the Anti Sleep Alarm robot" width="860" />
+<img src="hardware/images/project-photo.png" alt="Physical prototype of the Anti Sleep Alarm robot" width="860" />
 
 <br/>
 
@@ -71,7 +71,7 @@ Driver fatigue and microsleep events contribute to road accidents on long drives
 ## 🏗️ System Architecture
 
 <div align="center">
-  <img src="diagrams/system-architecture.png" alt="System architecture diagram" width="880" />
+  <img src="hardware/diagrams/system-architecture.png" alt="System architecture diagram" width="880" />
 </div>
 
 ```mermaid
@@ -184,7 +184,7 @@ If your module is inverted, flip that constant. Helpers `motorOn()` / `motorOff(
 ## 🔌 Circuit Diagram
 
 <div align="center">
-  <img src="diagrams/circuit-diagram.png" alt="Circuit overview diagram" width="880" />
+  <img src="hardware/diagrams/circuit-diagram.png" alt="Circuit overview diagram" width="880" />
 </div>
 
 <details>
@@ -193,7 +193,7 @@ If your module is inverted, flip that constant. Helpers `motorOn()` / `motorOff(
 <br/>
 
 <div align="center">
-  <img src="media/original-circuit-diagram.png" alt="Original circuit diagram from PDF" width="720" />
+  <img src="hardware/images/original-circuit-diagram.png" alt="Original circuit diagram from PDF" width="720" />
 </div>
 
 </details>
@@ -203,7 +203,7 @@ If your module is inverted, flip that constant. Helpers `motorOn()` / `motorOff(
 ## 🔀 Software Flowchart
 
 <div align="center">
-  <img src="diagrams/system-flowchart.png" alt="Software flowchart" width="640" />
+  <img src="hardware/diagrams/system-flowchart.png" alt="Software flowchart" width="640" />
 </div>
 
 ---
@@ -212,17 +212,49 @@ If your module is inverted, flip that constant. Helpers `motorOn()` / `motorOff(
 
 ```text
 anti-sleep-alarm/
-├── README.md
+├── README.md                 ← start here
 ├── LICENSE
 ├── .gitignore
-├── arduino/anti_sleep_alarm/anti_sleep_alarm.ino
-├── docs/                 # architecture, wiring, testing, troubleshooting
-├── diagrams/             # PNG + SVG diagrams
-├── media/                # logo, prototype photo, original figures
-├── simulation/wokwi/     # optional logic simulation
-├── website/              # optional static docs site
-└── original/             # source academic PDF
+│
+├── firmware/                 ← Arduino code (upload this)
+│   └── anti_sleep_alarm/
+│       └── anti_sleep_alarm.ino
+│
+├── docs/                     ← written guides (read in order)
+│   ├── README.md             ← docs index
+│   ├── architecture.md
+│   ├── hardware.md
+│   ├── wiring.md
+│   ├── software.md
+│   ├── testing.md
+│   ├── troubleshooting.md
+│   └── project-report.md
+│
+├── hardware/                 ← diagrams + photos
+│   ├── diagrams/
+│   └── images/
+│
+├── simulation/               ← optional Wokwi logic sim
+│   └── wokwi/
+│
+├── website/                  ← portfolio documentation site
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   └── assets/
+│
+└── archive/                  ← original academic PDF
 ```
+
+**Where should I look?**
+
+| I want to… | Go to |
+|------------|--------|
+| Upload code to Arduino | [`firmware/`](firmware/) |
+| Understand wiring | [`docs/wiring.md`](docs/wiring.md) |
+| See diagrams / photos | [`hardware/`](hardware/) |
+| Browse the project site | [`website/`](website/) |
+| Read the original PDF | [`archive/`](archive/) |
 
 ---
 
@@ -230,7 +262,7 @@ anti-sleep-alarm/
 
 1. Install [Arduino IDE](https://www.arduino.cc/en/software)  
 2. Connect Arduino UNO over USB  
-3. Open `arduino/anti_sleep_alarm/anti_sleep_alarm.ino`  
+3. Open `firmware/anti_sleep_alarm/anti_sleep_alarm.ino`  
 4. Select board: **Arduino UNO**  
 5. Select the correct **COM port**  
 6. Upload the sketch  
@@ -284,6 +316,7 @@ Details: [`docs/software.md`](docs/software.md)
 
 | Document | Description |
 |----------|-------------|
+| [`docs/README.md`](docs/README.md) | Documentation index (start here) |
 | [`docs/architecture.md`](docs/architecture.md) | System architecture |
 | [`docs/wiring.md`](docs/wiring.md) | Pinout & wiring |
 | [`docs/hardware.md`](docs/hardware.md) | Components & BOM |
@@ -291,8 +324,11 @@ Details: [`docs/software.md`](docs/software.md)
 | [`docs/testing.md`](docs/testing.md) | Test plan |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Common issues |
 | [`docs/project-report.md`](docs/project-report.md) | Project report summary |
-| [`website/`](website/) | Optional static site |
+| [`firmware/`](firmware/) | Arduino source |
+| [`hardware/`](hardware/) | Diagrams & photos |
+| [`website/`](website/) | Portfolio site |
 | [`simulation/`](simulation/) | Optional Wokwi simulation |
+| [`archive/`](archive/) | Original academic PDF |
 
 ---
 
@@ -357,10 +393,10 @@ MIT License — see [`LICENSE`](LICENSE)
 
 <br/>
 
-<img src="media/project-logo.png" alt="Anti Sleep Alarm" width="72" />
+<img src="hardware/images/project-logo.png" alt="Anti Sleep Alarm" width="72" />
 
 **Anti Sleep Alarm** — Embedded systems portfolio project
 
-[Repository](https://github.com/Ankit2004-web/anti-sleep-alarm) · [Arduino Firmware](arduino/anti_sleep_alarm/anti_sleep_alarm.ino) · [Wiring Guide](docs/wiring.md)
+[Repository](https://github.com/Ankit2004-web/anti-sleep-alarm) · [Arduino Firmware](firmware/anti_sleep_alarm/anti_sleep_alarm.ino) · [Wiring Guide](docs/wiring.md)
 
 </div>
