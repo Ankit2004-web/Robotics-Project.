@@ -192,30 +192,36 @@ code {
 
 .hero-media {
   position: absolute;
-  inset: -8%;
+  inset: -6%;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(240, 96, 0, 0.55), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 85% 25%, rgba(216, 32, 24, 0.5), transparent 52%),
-    radial-gradient(ellipse 90% 70% at 60% 90%, rgba(142, 12, 24, 0.65), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 45% 45%, rgba(255, 140, 80, 0.18), transparent 60%),
-    linear-gradient(165deg, #3a0a0e 0%, #8e0c18 38%, #d82018 68%, #f06000 100%);
-  transform: scale(1.04);
-  filter: saturate(1.05);
-  animation: heroZoom 28s ease-in-out infinite alternate;
+    radial-gradient(circle at 12% 18%, #ff9a3c 0%, transparent 38%),
+    radial-gradient(circle at 88% 22%, #ff4b2b 0%, transparent 36%),
+    radial-gradient(circle at 70% 85%, #c01020 0%, transparent 42%),
+    radial-gradient(circle at 30% 75%, #f06000 0%, transparent 40%),
+    linear-gradient(
+      125deg,
+      #8e0c18 0%,
+      #d82018 32%,
+      #f06000 58%,
+      #ff8a3d 78%,
+      #d82018 100%
+    );
+  transform: scale(1.05);
+  animation: heroFlow 16s ease-in-out infinite alternate;
 }
 
 .hero-wash {
   position: absolute;
   inset: 0;
+  /* Light veil only — keeps text readable without hiding the gradient */
   background:
-    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(20, 4, 6, 0.15), transparent 70%),
+    radial-gradient(ellipse 85% 70% at 50% 42%, rgba(0, 0, 0, 0.12), transparent 68%),
     linear-gradient(
       180deg,
-      rgba(20, 4, 6, 0.35) 0%,
-      rgba(20, 4, 6, 0.12) 42%,
-      rgba(20, 4, 6, 0.45) 100%
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0.04) 50%,
+      rgba(0, 0, 0, 0.22) 100%
     );
-  backdrop-filter: blur(0.5px);
 }
 
 .hero-content {
@@ -764,6 +770,15 @@ th {
   to { transform: scale(1.08); }
 }
 
+@keyframes heroFlow {
+  from {
+    transform: scale(1.04) translate3d(-1.2%, -0.6%, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(1.2%, 0.8%, 0);
+  }
+}
+
 @media (max-width: 960px) {
   .split,
   .table-grid,
@@ -819,7 +834,7 @@ th {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-media { animation: none; }
+  .hero-media { animation: none; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-logo, .brand, .hero h1, .lede, .cta-row { animation: none; }
 }
